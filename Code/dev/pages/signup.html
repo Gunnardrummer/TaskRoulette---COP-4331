@@ -1,0 +1,49 @@
+<!--
+  signup.html:   Signup page
+  By:            Jess
+-->
+
+<!doctype html>
+
+<html ng-app="TaskRoulette">
+
+    <head>
+        <title>TaskRoulette - Signup</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular/angular-cookies.js"></script>
+        <script type="text/javascript" src="/js/background.js"></script>
+        <script type="text/javascript" src="/js/signupController.js"></script>
+        <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <!-- Nav bar -->
+        <div class="navbar navbar-fixed-top navbar-inverse logo-link" role="navigation">
+            <a href="/"><h2 class="cabin-font center-logo"><span class="tr-white">Task</span><span class="tr-blue"><i>Roulette</i></span></h2></a>
+        </div>
+
+        <!-- Container -->
+        <div class="container">
+            <form class="form-signin form-signup" ng-controller="SignupController" ng-submit="signup()">
+                <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+                <input type="text" class="form-control" placeholder="Username" ng-model="user.username">
+                <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+                <input type="password" class="form-control" placeholder="Confirm Password" ng-model="user.trypass">
+                <button class="btn btn-login" type="submit">Signup</button>
+            </form>
+        </div>
+        <!-- /container -->
+
+        <!-- Background image - fade in/out -->
+        <div id="background-image" class="hidden-img opaque">
+            <img src="/img/bkg1.jpg" width="3000" height="2093">
+        </div>
+
+    </body>
+
+</html>

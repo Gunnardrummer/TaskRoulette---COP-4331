@@ -1,0 +1,51 @@
+
+<html ng-app>
+	<head>
+		<script src="/bower_components/angular/angular.js"></script>
+		<script src="activity.js"></script>
+	</head>
+	<body>
+		<h2>Activities</h2>
+		<div ng-controller="ActControl">
+			<span> Total: {{acts.length}} </span>
+			<table>
+				<th ng-repeat="prop in props">
+						{{prop}}
+				</th>
+				<tr ng-repeat="act in acts">
+					<td ng-repeat="actprop in act">
+						{{actprop}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form>
+							<input type="text" ng-model="name" placeholder="add new activity">
+						</form>
+					</td>
+					<td>
+						<form>
+							<input type="text" ng-model="time" placeholder="add new activity">
+						</form>
+					</td>
+					<td>
+						<form>
+							<input type="text" ng-model="description" placeholder="add new activity">
+						</form>
+					</td>
+					<td>
+						<form>
+							<input type="text" ng-model="category" placeholder="add new activity">
+						</form>
+					</td>
+					<td>
+						<form ng-submit="addAct()">
+							<input class="btn-primary"
+							type="submit" value="add">
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

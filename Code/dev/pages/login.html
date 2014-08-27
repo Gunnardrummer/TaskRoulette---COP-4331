@@ -1,0 +1,52 @@
+<!--
+  login.html:    Login page
+  By:            Jess
+-->
+
+<!doctype html>
+
+<html ng-app="TaskRoulette">
+
+    <head>
+        <title>TaskRoulette - Login</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular/angular-cookies.js"></script>
+        <script type="text/javascript" src="/js/background.js"></script>
+        <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="/js/loginController.js"></script>
+    </head>
+
+    <body>
+        <!-- Nav bar -->
+        <div class="navbar navbar-fixed-top navbar-inverse logo-link" role="navigation">
+            <a href="/"><h2 class="cabin-font center-logo"><span class="tr-white">Task</span><span class="tr-blue"><i>Roulette</i></span></h2></a>
+        </div>
+
+        <!-- Container -->
+        <div class="container">
+            <form class="form-signin max-width" ng-controller="LoginController" ng-submit="login()">
+                <input type="text" class="form-control" placeholder="Username" ng-model="user.username">
+                <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+                <table width="100%"><tr>
+                    <td width="50%"><button class="btn btn-login" type="submit">Login</button></td>
+                    <td width="2%"></td>
+                    <td width="48%"><a class="btn btn-login" href="/signup">Signup</a></td>
+                </tr></table>
+            </form>
+        </div>
+        <!-- /container -->
+
+        <!-- Background image - fade in/out -->
+        <div id="background-image" class="hidden-img opaque">
+            <img src="/img/bkg1.jpg" width="3000" height="2093">
+        </div>
+
+    </body>
+
+</html>

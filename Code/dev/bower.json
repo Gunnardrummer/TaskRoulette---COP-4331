@@ -1,0 +1,17 @@
+{
+  "name": "taskRoulette",
+  "version": "1.0.0",
+  "description": "fun",
+  "authors": [
+    "MADNESS"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,100 @@
+<!--
+  home.html:    Home pages shows the tasks.
+  By:           Jess, Cody
+-->
+
+<!doctype html>
+
+<html ng-app="TaskRouletteHome">
+
+    <head>
+        <title>TaskRoulette - Home</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular/angular-cookies.js"></script>
+        <script type="text/javascript" src="/js/background.js"></script>
+        <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="/js/taskController.js"></script>
+    </head>
+
+    <body ng-controller="TaskController">
+        <!-- Nav bar -->
+        <div class="navbar navbar-fixed-top navbar-inverse logo-link" role="navigation">
+            <a href="/"><h2 class="cabin-font center-logo"><span class="tr-white">Task</span><span class="tr-blue"><i>Roulette</i></span></h2></a>
+        </div>
+
+        <!-- Container -->
+        <div class="container list-margin">
+
+            <table width="91%" class="move-table">
+                <tr>
+                    <td>
+                        <span class="pointer glyphicon glyphicon-off logout-style" ng-click="logout()"></span>
+                    </td>
+                    <td align="right">
+                        <div class="pointer add-style"  onclick="location.href='/list';">
+                            Add/view tasks! &nbsp;
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <span ng-show="showGet">
+                <form class="home-input max-width" ng-submit="getTask()">
+                    <table width="100%">
+                        <tr><td align="center" class="home-quest">How much time do you have (in minutes)?</td></tr>
+                        <tr><td align="center"><input type="text" class="timer-box" placeholder="30" ng-model="task.timeGiven"></td></tr>
+                        <tr><td align="center"><button class="btn home-button" type="submit">Get Task</button></td></tr>
+                    </table>
+                </form>
+            </span>
+
+            <span ng-show="noTasks" class="home-input max-width single-task-list">
+                <table width="100%">
+                    <tr><td align="center">There are no tasks for that time :(</td></tr>
+                </table>
+            </span>
+
+             <span ng-show="showTasks" class="home-input max-width single-task-list">
+                <table width="100%">
+                    <tr><td align="center">
+                        <table width="55%">
+                            <tr><td>Title: {{tasks.title}}</td></tr>
+                            <tr><td>Description: {{tasks.description}}</td></tr>
+                            <tr><td>Time: {{tasks.time}}</td></tr>
+                            <tr><td>Category: {{tasks.category}}</td></tr>
+                        </table>
+                    </td></tr>
+
+                    <tr><td align="center"><button class="btn home-button" ng-click="acceptTask()">Ok</button></td></tr>
+                    <tr><td align="center"><button class="btn home-button" ng-click="getTask()">Give me another task</button></td></tr>
+                </table>
+            </span>
+
+            <span ng-show="showCurr" class="home-input max-width single-task-list">
+                <table width="100%">
+                    <tr><td align="center">
+                        <table width="55%">
+                            <tr><td>Title: {{currTask.title}}</td></tr>
+                            <tr><td>Description: {{currTask.description}}</td></tr>
+                            <tr><td>Time: {{currTask.time}}</td></tr>
+                            <tr><td>Category: {{currTask.category}}</td></tr>
+                        </table>
+                    </td></tr>
+
+                    <tr><td align="center"><button class="btn home-button" ng-click="doneTask(currTask)">Done with task</button></td></tr>
+                    <tr><td align="center"><button class="btn home-button" ng-click="getTask()">Give me another task</button></td></tr>
+                </table>
+            </span>
+        </div>
+        <!-- /container -->
+
+    </body>
+
+</html>

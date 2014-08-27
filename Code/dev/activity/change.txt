@@ -1,0 +1,1 @@
+change activity.html & activity.js to list.html/js

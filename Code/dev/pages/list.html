@@ -1,0 +1,100 @@
+<!--
+  list.html:     List page shows the list of tasks that the user has. The user can also add tasks from this page.
+  By:            Jess, Cody
+-->
+
+<!doctype html>
+
+<html ng-app="TaskRoulette">
+
+    <head>
+        <title>TaskRoulette - List</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular/angular-cookies.js"></script>
+        <link href="http://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css">
+
+        <!-- Controller for the list page -->
+        <script type="text/javascript" src="/js/listController.js"></script>
+    </head>
+
+    <body ng-controller="ListController">
+        <!-- Nav bar -->
+        <div class="navbar navbar-fixed-top navbar-inverse logo-link" role="navigation">
+            <a href="/"><h2 class="cabin-font center-logo"><span class="tr-white">Task</span><span class="tr-blue"><i>Roulette</i></span></h2></a>
+        </div>
+
+        <!-- Container -->
+        <div class="container list-margin">
+            <table width="91%" border="0px solid black" class="move-table">
+                <tr>
+                    <td>
+                        <span class="pointer glyphicon glyphicon-off logout-style" ng-click="logout()"></span>
+                    </td>
+
+                    <td>
+                        <div class="pointer add-style move-right"  onclick="location.href='/home';">
+                            Get a task &nbsp;
+                        </div>
+                    </td>
+
+                    <td align="right">
+                        <div ng-click="showAdd=!showAdd" class="pointer add-style">
+                            Add a task! &nbsp;
+                            <span ng-if="!showAdd" class="glyphicon glyphicon-plus"></span>
+                            <span ng-if="showAdd" class="glyphicon glyphicon-minus"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <span ng-show="noTasks" class="home-input max-width single-task-list">
+                <table width="100%">
+                    <tr><td align="center">You have no tasks! :(</td></tr>
+                </table>
+            </span>
+
+            <form class="form-task" ng-show="showAdd" ng-submit="addTask()">
+                <table width="100%">
+                    <tr><td colspan="2"><input type="text" class="form-control" placeholder="Task" ng-model="task.taskTitle" required></td></tr>
+                    <tr><td colspan="2"><input type="text" class="form-control" placeholder="Category" ng-model="task.category" required></td></tr>
+                    <tr><td colspan="2"><input type="text" class="form-control" placeholder="Description" ng-model="task.desc" required></td></tr>
+                    <tr><td><input type="number" class="form-control" placeholder="Time" ng-model="task.timeGiven"></td></tr>
+                    <tr><td colspan="2"><button class="btn btn-login" type="submit">Add Task</button></td></tr>
+                </table>
+            </form>
+
+
+            <ul class="task-list">
+                <li ng-repeat="task in tasks">
+                    <table width="100%">
+                        <tr>
+                            <td style="width: 85%"><div ng-click="viewInfo(task)" class="pointer">{{task.title}}</div></td>
+                            <td align="right">
+                                <div ng-click="viewInfo(task)" class="pointer glyphicon glyphicon-list hover-icon"></div>
+                                &nbsp;
+                                <div ng-click="delete(task)" class="pointer glyphicon glyphicon-trash hover-icon"></div>
+                            </td>
+                        </tr>
+                        <tr><td>
+                            <div ng-show="view == task" ng-click="show=false">
+                                Description: {{view.description}}<br>
+                                Time: {{view.time}}<br>
+                                Category: {{view.category}}<br>
+                                <!-- Actual Time: {{view.actualTime}} -->
+                            </div>
+                        </td></tr>
+                    </table>
+                </li>
+            </ul>
+
+        </div>
+        <!-- /container -->
+
+    </body>
+
+</html>
